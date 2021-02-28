@@ -1,31 +1,40 @@
 import unittest
 from CounterImpl import CounterImpl
+from Counter import Counter
 
 
 class CounterImplTest(unittest.TestCase):
-    counterimpl: CounterImpl
+    counter: Counter
 
     def setUp(self) -> None:
-        self.counterimpl = CounterImpl()
-        super().setUp()
+        self.counter = CounterImpl()
 
     def test_should_init_counter_with_one_wheel_having_0_as_max_value(self):
-        self.counterimpl.init([0])
-        self.assertEqual(self.counterimpl.current(), [0])
+        self.counter.init([0])
+        self.assertEqual([0], self.counter.current())
 
     def test_should_not_increment_counter_if_it_has_one_wheel_having_0_as_max_value(self):
-        self.counterimpl.init([0])
-        self.counterimpl.next()
-        self.assertEqual(self.counterimpl.current(), [0])
+        self.counter.init([0])
+        self.counter.next()
+        self.assertEqual([0], self.counter.current())
 
     def test_should_not_have_next_value_if_counter_has_one_wheel_having_0_as_max_value(self):
-        self.counterimpl.init([0])
-        self.assertFalse(self.counterimpl.hasnext())
+        self.counter.init([0])
+        self.assertFalse(self.counter.hasnext())
 
     def test_should_have_one_possible_value_if_counter_has_one_wheel_having_0_as_max_value(self):
-        self.counterimpl.init([0])
-        self.assertEquals(self.counterimpl.nbpossiblevalues(), 1)
+        self.counter.init([0])
+        self.assertEqual(1, self.counter.nbpossiblevalues())
 
     def test_should_have_no_remaining_values_if_counter_has_one_wheel_having_0_as_max_value(self):
-        self.counterimpl.init([0])
-        self.assertEquals(self.counterimpl.nbremainingvalues(), 0)
+        self.counter.init([0])
+        self.assertEqual(0, self.counter.nbremainingvalues())
+
+    def test_should_init_counter_with_one_wheel_having_1_as_max_value(self):
+        self.counter.init([1])
+        self.assertEqual([0], self.counter.current())
+
+    def test_should_increment_counter_if_it_has_one_wheel_having_1_as_max_value(self):
+        self.counter.init([1])
+        self.counter.next()
+        self.assertEqual([1], self.counter.current())
