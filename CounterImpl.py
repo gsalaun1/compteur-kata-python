@@ -20,10 +20,10 @@ class CounterImpl(Counter):
             self.__currentwheels[0] = self.__currentwheels[0] + 1
 
     def hasnext(self) -> bool:
-        return False
+        return self.__currentwheels != self.__maxwheels
 
     def nbpossiblevalues(self) -> int:
-        return 1
+        return self.__maxwheels[0] + 1
 
     def nbremainingvalues(self) -> int:
-        return 0
+        return self.__maxwheels[0]-self.__currentwheels[0]
