@@ -11,7 +11,7 @@ class CounterImpl(Counter):
 
     def init(self, liste: list[int]):
         self.__currentwheels = []
-        for wheel in liste:
+        for _ in liste:
             self.__currentwheels.append(0)
         self.__maxwheels = liste
 
@@ -20,7 +20,10 @@ class CounterImpl(Counter):
 
     def next(self):
         if self.__currentwheels != self.__maxwheels:
-            self.__currentwheels[0] = self.__currentwheels[0] + 1
+            if len(self.__currentwheels) == 1:
+                self.__currentwheels[0] = self.__currentwheels[0] + 1
+            if len(self.__currentwheels) == 2:
+                self.__currentwheels[1] = self.__currentwheels[1] + 1
 
     def hasnext(self) -> bool:
         return self.__currentwheels != self.__maxwheels
