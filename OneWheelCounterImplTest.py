@@ -2,7 +2,7 @@ import unittest
 from CounterImpl import CounterImpl
 
 
-class CounterImplTest(unittest.TestCase):
+class OneWheelCounterImplTest(unittest.TestCase):
     counter: CounterImpl
 
     def setUp(self) -> None:
